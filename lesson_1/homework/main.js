@@ -1,3 +1,44 @@
+let elem = document.createElement('button');
+let div = document.createElement('div');
+let div1 = document.createElement('div');
+elem.setAttribute('type', 'button');
+elem.innerText = 'Кликни по мне!';
+elem.style.background = 'green';
+document.body.style.display = 'flex';
+document.body.style.flexDirection = 'column';
+document.body.style.justifyContent = 'center';
+document.body.style.alignItems = 'center';
+div1.style.marginTop = '20%';
+div1.style.fontSize = '40px';
+div1.style.fontWidth = 'bolder';
+//elem.style.margin = '200px auto 0 auto';
+elem.setAttribute('onClick', "randBack(getRandomIntInclusive)");
+//div1.style.margin = '400px auto 0 auto';
+document.body.appendChild(div);
+document.body.appendChild(elem);
+document.body.appendChild(div1);
+function getRandomIntInclusive(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      let r = Math.floor(Math.random() * (max - min + 1)) + min;
+      let g = Math.floor(Math.random() * (max - min + 1)) + min;
+      let b = Math.floor(Math.random() * (max - min + 1)) + min;
+      let str = '#' + r.toString(16) + '' + g.toString(16) + '' + b.toString(16) + '';
+      if(str.length == 6) str = str + 1;
+      console.log(str);
+      return str;
+
+    }
+function randBack(CallBack){
+  let min = 10;
+  let max = 100;
+  let result = getRandomIntInclusive(min, max);
+  div1.innerText = result;
+  document.body.style.background = result;
+  return result;
+}
+console.log(document.body);
+
 /*
 
   Задание 1.

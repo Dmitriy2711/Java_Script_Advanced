@@ -25,11 +25,11 @@
         // Ваш код должен быть тут!
 
         //var test = test.target.dataset.color;
-        console.log( e );
-
+        let eventTarget = event.target;
+        let per = eventTarget.dataset.color;
+        document.body.style.background = per;
+        
       }
-
-
     </script>
 </body>
 </html>
