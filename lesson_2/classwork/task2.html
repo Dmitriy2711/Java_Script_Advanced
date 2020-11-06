@@ -83,61 +83,91 @@
 
     */
 
-    var mouseHover = document.getElementById('mouseHover');
-    var mouseClick = document.getElementById('mouseClick');
-    var mouseLight = document.getElementById('mouseLight');
-    var keyboardButton = document.getElementById('keyboardButton');
-    
-        for(let i = 0; i < child.length; i++){
+  var mouseHover = document.getElementById('mouseHover');
+  var mouseClick = document.getElementById('mouseClick');
+  var mouseLight = document.getElementById('mouseLight');
+  var keyboardButton = document.getElementById('keyboardButton');
+  for(let i = 0; i < child.length; i++){
           child[i].style.display = 'none';
           console.log(child[i]);
       }
-    mouseHover.onmouseenter = function(){
-      if(count >= 5) {
-          //console.log(child);
-          //console.log('reset');
-      for(let k = 0; k < child.length; k ++){
-          child[k].style.display = 'none';
-      }
-      //console.log(child);
-      return count = 0;
-      }
+  mouseHover.onmouseenter = function(){
+        if(count >= 5) {    
+            //console.log(child);
+            //console.log('reset');
+          for(let k = 0; k < child.length; k ++){
+            child[k].style.display = 'none';
+          }
+            //console.log(child);
+            return count = 0;
+          }
       else{
-        child[count].style.display = 'block';
-      //console.log('hover');
-      //console.log(count);
-      return count ++;
-      }
-      
-    }
-    var clickIndex = 0;
-    var direction = true;
-    
-    
-    mouseClick.onclick = function(){
-      var array = ['six', 'two', 'three', 'four', 'one', 'five'];
-      var list = document.getElementById('clickResult');
-      var listClass = list.classList;
-      console.log(listClass);
-      console.log(array);
+          child[count].style.display = 'block';
+          //console.log('hover');
+          //console.log(count);
+          return count ++;
+          }
+  }
+      var clickIndex = 0;
+      var arraySet = ['one', 'two', 'three', 'four', 'five', 'six'];
+      var direction = true;
+      var arrayClean = ['six', 'two', 'three', 'four', 'one', 'five'];
+      mouseClick.onclick = function(){
+        var list = document.getElementById('clickResult');
+        var listClass = list.classList;
+      if(clickIndex < 6){
         for(let i = 0; i < listClass.length; i ++){
-            if(array[clickIndex] == listClass[i]){
-                list.classList.remove(array[clickIndex]);
+            if(arrayClean[clickIndex] == listClass[i]){
+                list.classList.remove(arrayClean[clickIndex]);
             }
         }
-      console.log(listClass);
-      return clickIndex ++;  
+      return clickIndex++;
+      }
+      else {
+          let per = arraySet.shift();
+          listClass.add(per);
+          return arraySet;
+      }
     }
-
-
-    mouseLight.onclick = function(e){
-        console.log('light');
-    }
+  
+  let mass = ['Off', 'red', 'yellow', 'green', 'Off'];
+  let massColor  = ['black', 'red', 'yellow', 'green', 'black'];
+  let divParent = document.getElementById('lightResult');
+  divParent.style.display = 'flex';
+  divParent.style.flexDirection = 'column';
+      for(let k = 0; k < mass.length; k ++){
+      let divChild = document.createElement('div');
+      let className = divChild.className = mass[k];
+      divChild.style.background = massColor[k];
+      divChild.style.width = '50%';
+      divChild.style.height = '';
+      divChild.style.display = 'none';
+      divChild.style.textAlign = 'center';
+      divChild.style.padding = '5px';
+      divChild.innerText = mass[k];
+        divParent.appendChild(divChild);
+      }
+      console.log(divParent);
+      mouseLight.onclick = function(e){
+          if(count < 5){
+          let childs = divParent.querySelectorAll('.resultBlock div');
+          childs[count].style.display = 'block';  
+          console.log('light');
+          return count ++;
+          }
+          else {
+            let childs = divParent.querySelectorAll('.resultBlock div');
+            childs.forEach(function(elem,item){
+            elem.style.display = 'none';
+                  })
+          return count = 0;
+          } 
+      }
 
     var counter = 0;
-    keyboardButton.onkeydown = function(){
+  keyboardButton.onkeydown = function(){
         console.log('keydown');
-    }
+  }
   </script>
 </body>
 </html>
