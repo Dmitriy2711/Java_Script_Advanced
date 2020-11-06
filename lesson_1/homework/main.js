@@ -31,7 +31,7 @@ function getRandomIntInclusive(min, max) {
     }
 function randBack(CallBack){
   let min = 10;
-  let max = 100;
+  let max = 255;
   let result = getRandomIntInclusive(min, max);
   div1.innerText = result;
   document.body.style.background = result;
