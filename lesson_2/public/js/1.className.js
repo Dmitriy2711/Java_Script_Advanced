@@ -2,8 +2,6 @@
   Любой DOM-элемент это обьект и соответствено мы можем его
   читать и изменять.
 */
-
-
   var target = document.getElementById('target');
       target.someObject = {
         host: 'ITEA',

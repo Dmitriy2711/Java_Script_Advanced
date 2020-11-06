@@ -24,7 +24,18 @@
       console.log('Combined log:', Table);
       console.table(Table);
       console.error('Oops! Something gonna wrong!');
-      console.warn('Be careful in the dark! Its can be dangerous')
+      console.warn('Be careful in the dark! Its can be dangerous');
+      console.log('%cHello user', 'font-size: 30px; color: green');
+      console.group();
+        console.log('log 1');
+          console.group();
+            console.log('Group');
+              console.group();
+                console.log('Log 2');
+              console.groupEnd();
+          console.groupEnd();
+        console.log('End log 1');
+      console.groupEnd();
     </script>
 </body>
 </html>
