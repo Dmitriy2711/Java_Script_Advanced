@@ -12,13 +12,13 @@ getButtons.forEach(function(elem, item){
           count++;
         }
         else if(count >= getButtons.length) {
-          for(let i = 0; i< getButtons.length; i++){
+          for(let i = 0; i < getButtons.length; i ++){
             tabs[i].classList.remove('active');
           }
-          count = 0; 
+        count = 0; 
         }
       }
-  });
+});
   /*
 
     Задание 1.
