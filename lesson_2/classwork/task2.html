@@ -166,7 +166,12 @@
 
     var counter = 0;
   keyboardButton.onkeydown = function(){
+    if(counter >= 10) {
+      parentRes.innerText = counter;
+      parentRes.className = a + " " + array[counter - 1];
+    }
         console.log('keydown');
+        counter++; 
   }
   </script>
 </body>

@@ -1,4 +1,24 @@
-
+let getButtons = document.querySelectorAll('#buttonContainer button');
+let count = 0;
+console.log(getButtons);
+getButtons.forEach(function(elem, item){
+    elem.onclick = function(){
+      let dataset = elem.dataset.tab;
+      console.log(dataset);
+      let tabs = document.querySelectorAll('.tab');
+        if(count < getButtons.length){
+          tabs[dataset - 1].classList.add('active');
+          console.log(tabs);
+          count++;
+        }
+        else if(count >= getButtons.length) {
+          for(let i = 0; i< getButtons.length; i++){
+            tabs[i].classList.remove('active');
+          }
+          count = 0; 
+        }
+      }
+  });
   /*
 
     Задание 1.
