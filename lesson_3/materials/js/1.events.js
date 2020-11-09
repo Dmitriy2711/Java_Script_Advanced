@@ -94,5 +94,5 @@
   });
 
   window.addEventListener("keyup", function(event){
-      document.body.style.background = "";
+      document.body.style.background = "red";
   });

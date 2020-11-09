@@ -7,7 +7,7 @@ function func1() {
 
     setTimeout(function(){
         alert('123123');
-    }, 0);
+    }, 3000);
 
     func2();    
 }

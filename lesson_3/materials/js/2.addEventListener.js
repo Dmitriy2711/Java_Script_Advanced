@@ -10,14 +10,14 @@
 
   btn.addEventListener('click', ChangeBackColor);
 
-  // // remove eventListener
+   //remove eventListener
 
-  // var buttonsSelector = document.querySelectorAll('._changeColor');
-  // console.log( buttonsSelector );
+   var buttonsSelector = document.querySelectorAll('._changeColor');
+   console.log( buttonsSelector );
 
-  // for (var i = 0; i < buttonsSelector.length; i++) {
-  //   buttonsSelector[i].addEventListener('click', ChangeBackColor);
-  // }
+   for (var i = 0; i < buttonsSelector.length; i++) {
+     buttonsSelector[i].addEventListener('click', ChangeBackColor);
+   }
 
   // var nButton = document.querySelector('._changeColor');
   //     nButton.removeEventListener('click', ChangeBackColor);
