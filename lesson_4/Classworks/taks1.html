@@ -3,27 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Forms Task 1</title>
-  <script>
-    /*
-      Задание:
-        Сделать валидацию формы:
-        1. Логин / Пароль не может быть пустым
-        2. Пароли должны совпадть
-        3. Пока не стоит что юзер согласен с лиц. соглашением - кнопка отправки не активна
-
-        + бонус - то поле, которое не прошло валидацию подсвечивать красным.
-                - которое прошло - подсвечивать зеленым.
-    */
-  </script>
+  
 </head>
 <body>
-  <form id="MyValidateForm">
+  <form id="MyValidateForm" >
     <input type="text" name='login' placeholder="Ваш логин" />
     <input type="password" name='pas1' placeholder="Ваш пароль" />
     <input type="password" name='pas2' placeholder="Повторите пароль" />
     <label for="agree">
       <span>Вы согласны с лицензионым соглашением.</span>
-      <input type="checkbox" id="agree" />
+      <input type = "checkbox" id = "agree" />
     </label>
     <input type="submit" id="submit" value="Отправить" disabled/>
   </form>
@@ -47,5 +36,103 @@
         border: 1px solid green;
     }
   </style>
+<script>
+
+window.addEventListener("load", function (){
+  let form = document.getElementById('MyValidateForm');
+  form.setAttribute('name', 'nameForm');
+  form.setAttribute('valid', 'false');
+  //form.setAttribute('valid', false);
+  console.log(form);
+  let forms = document.forms;
+  let arrayF = Array.from(forms);
+  console.log(arrayF);
+  let elemSub = document.getElementById('submit');
+  let check = document.getElementById('agree');
+  console.log(elemSub);
+  form.addEventListener('submit', function( event ){
+              if(form.valid){  
+                  alert('form submitted');
+              }
+              else{
+                event.preventDefault();
+              }
+
+      })  
+  arrayF.forEach(function(elem, item){
+    let elements = elem.querySelectorAll('input');
+        elements.forEach(function(elem, item){
+        elem.addEventListener('change', function(e){
+                let el = e.target;
+            if(el.checked == true) {
+              console.log('Hello!');
+              elemSub.removeAttribute('disabled');
+            }
+            else{
+                elemSub.disabled = true;
+            }
+        })    
+        elem.addEventListener("blur", function(e) {
+            let element = e.target;
+            let pas2V = form.elements.pas2.value;
+            let pas1V = form.elements.pas1.value;
+            if(element.name == 'login'){
+                if(element.value == ''){
+                    element.className = 'error';
+                    form.valid = false;
+                    console.log(form.valid);
+                }
+                else{
+                    form.valid = true;
+                    element.className = 'OK';
+                    console.log(form.valid);
+                }
+            }
+            if(element.name == 'pas1') {
+                if(element.value != '' && element.value == pas2V){
+                    element.className = 'OK';
+                    form.elements.pas2.className = 'OK';
+                    form.valid = true;
+                    console.log(form.valid);
+                }
+                else{
+                    element.className = 'error';
+                    form.elements.pas2.className = 'error';
+                    form.valid = false;
+                    console.log(form.valid);
+                }
+            }
+            if(element.name == 'pas2') {
+                if(element.value != '' && element.value == pas1V){
+                    element.className = 'OK';
+                    form.elements.pas1.className = 'OK';
+                    form.valid = true;
+                    console.log(form.valid);
+                }
+                else{
+                    element.className = 'error';
+                    form.elements.pas1.className = 'error';
+                    form.valid = false;
+                    console.log(form.valid);
+                }
+            }
+        })
+        
+      })
+    })
+
+})
+
+  /*
+      Задание:
+        Сделать валидацию формы:
+        1. Логин / Пароль не может быть пустым
+        2. Пароли должны совпадть
+        3. Пока не стоит что юзер согласен с лиц. соглашением - кнопка отправки не активна
+
+        + бонус - то поле, которое не прошло валидацию подсвечивать красным.
+                - которое прошло - подсвечивать зеленым.
+  */
+</script>  
 </body>
 </html>

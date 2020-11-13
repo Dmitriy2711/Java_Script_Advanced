@@ -11,6 +11,11 @@
             console.log( document.forms ); // Получить форму по индексу
 
             console.log( 'by name:', document.forms.myFormName.elements );
+            let a = document.forms.myFormName.elements;
+            console.log(a);
+            for(let i = 0; i < a.length; i ++){
+                console.log(a[i]);
+            }
             //
             // var registration = document.getElementById("registration");
             //     registration.addEventListener("click", function ( event ) {
