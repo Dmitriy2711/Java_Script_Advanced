@@ -1,4 +1,78 @@
+    window.addEventListener('load', ValidateForm);
+        function ValidateForm(event){
+            let getForm = document.querySelector('Form');
+            let getInputs = getForm.querySelectorAll('input');
+            let submit = document.getElementById('Go'); 
+            console.log(getInputs);
+            getInputs.forEach(function(elem, item){
+                if(elem.name == 'login'){
+                    elem.addEventListener('input', function(){
+                        if(elem.value === "") {
+                            console.log(elem.validity);
+                            elem.setCustomValidity('Как тебя зовут дружище?!');
+                        }
+                    });
+                    
+                }
+                else if(elem.name == 'your_email'){
+                    elem.addEventListener("input", function(){
+                        if(elem.validity.customError) {
+                            elem.setCustomValidity("Ну и зря, не получишь бандероль с яблоками!");
+                        }
+                    });
+                }
+                else if(elem.name == 'pass'){
+                    elem.addEventListener("input", function(e){
+                        if(elem.value == ''){
+                            e.target.setCustomValidity("Я никому не скажу наш секрет");
+                        }
+                    });
+                }
+                else if(elem.name == 'appleCount'){
+                    elem.addEventListener("input", function(e){
+                        if(elem.value == 0){
+                            e.target.setCustomValidity("Ну хоть покушай немного... Яблочки вкусные");
+                        }
+                    });
+                }
+                else if(elem.name == 'thanks'){
+                    elem.addEventListener("change", function(e){
+                        if(elem.value !== 'спасибо'){
+                            e.target.setCustomValidity("Фу, неблагодарный(-ая)!");
+                        }
+                    });
+                }
+                else if(elem.name == 'check'){
+                    elem.addEventListener("change", function(e){
+                        if(!elem.checked){
+                            elem.setCustomValidity("Необразованные живут дольше! Хорошо подумай!");
+                        }
+                    });
+                }
+                else if(elem.type == 'submit'){
+                    elem.addEventListener("click", function(e){
+                    let getForm = document.querySelector('Form'); 
+                        e.preventDefault();
+                        if(getForm.checkValidity()){
+                            getForm.submit();
+                        }
+                    });
+                }
+                else if(elem.id == 'validate'){
+                    console.log(elem.type);
+                    elem.addEventListener("click", function(e){
+                        e.preventDefault();
+                        getForm.checkValidity();
+                        getForm.reportValidity();
+                    });
+                }
 
+            })
+        // getForm.addEventListener("submit", function(){
+        //     if(getForm.)
+        // });
+        
+        }
 
     /*
 

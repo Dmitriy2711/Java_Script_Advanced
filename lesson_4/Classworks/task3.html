@@ -20,7 +20,54 @@
 
     */
     window.addEventListener("load", function () {
-
+        let counter = 0;
+        let inputText = document.getElementById('newToDo');
+        let addToDo = document.getElementById('AddToDo');
+        let toDoList = document.getElementById('toDoList');
+            addToDo.addEventListener("click", function(e){
+                let listItem = document.createElement('li');
+                    listItem.className = 'listItem';
+                let inputCheck = document.createElement('input');
+                    inputCheck.setAttribute('type', 'checkbox');
+                    inputCheck.className = 'DoneCheckbox';
+                let spanText = document.createElement('span');
+                    spanText.className = 'TodoText';
+                let button = document.createElement('button');
+                    button.innerText = 'Remove';
+                    button.setAttribute('number', counter);
+                    toDoList.appendChild(listItem);
+                    listItem.appendChild(inputCheck);
+                    listItem.appendChild(spanText);
+                    //console.log(inputText.value);
+                    spanText.innerText = inputText.value;
+                    listItem.appendChild(button);
+                let itemsList = toDoList.querySelectorAll('li');
+                    //console.log(counter);
+                    inputCheck.addEventListener("change", check);
+                button.addEventListener("click", function(e){
+                    let val = e.target.getAttribute('number');
+                        itemsList.forEach(function(elem, item){
+                          // let val = 
+                        if(counter < 0) counter = 0;
+                            if(val == item){
+                            toDoList.removeChild(elem);
+                            counter--;
+                          }
+                        });
+                });
+            function check(event){
+                if(event.target.checked){
+                    let span = document.createElement('span');
+                        span.innerText = 'Пункт выполнен!';
+                        span.style.display = 'block';
+                        listItem.appendChild(span);
+                        if(span.innerText != '') {
+                            event.target.removeEventListener("change", check);
+                        }
+                }
+            }  
+            counter ++;
+            });
     });
   </script>
 </head>
@@ -31,11 +78,11 @@
     </header>
     <ul id="toDoList">
 
-        <li class="listItem">
+        <!-- <li class="listItem">
             <input type="checkbox" class="DoneCheckbox" />
             <span class="TodoText">{add text}</span>
             <button>Remove</button>
-        </li>
+        </li> -->
     </ul>
 
   <style>
