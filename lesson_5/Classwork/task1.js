@@ -1,3 +1,18 @@
+ 	function go(){
+	console.log("Поезд " + this.name + " везет " + this.countPass + " человек со скоростью " + this.speed + "км/ч");
+}
+ 	function stop(){
+	console.log("Поезд остановился. Скорость " + (this.speed = 0) + " км/ч");
+}
+let Train = {
+	name:'Запорожье - Киев',
+	speed: 140,
+	countPass: 20,
+	go,
+	stop, 
+}
+Train.go();
+Train.stop();
 /*
 
     Задание 1:
