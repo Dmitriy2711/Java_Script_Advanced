@@ -1,16 +1,16 @@
 
 function Commit(name, text, avatarUrl){
-  this.name = name;
-  this.text = text;
-  this.avatarUrl = avatarUrl;
-  this.likes = 1;
+    this.name = name;
+    this.text = text;
+    this.avatarUrl = avatarUrl;
+    this.likes = 1;
 }
 let CustomImg = {
-  avatarUrl : 'https://ru.123rf.com/%D0%A4%D0%BE%D1%82%D0%BE-%D1%81%D0%BE-%D1%81%D1%82%D0%BE%D0%BA%D0%B0/%D0%90%D0%B2%D0%B0%D1%82%D0%B0%D1%80%D0%B0.html?sti=m9aszhc0bu7tokw5wt|&mediapopup=42584408',
-  countsLike : function(){
+    avatarUrl : 'https://ru.123rf.com/%D0%A4%D0%BE%D1%82%D0%BE-%D1%81%D0%BE-%D1%81%D1%82%D0%BE%D0%BA%D0%B0/%D0%90%D0%B2%D0%B0%D1%82%D0%B0%D1%80%D0%B0.html?sti=m9aszhc0bu7tokw5wt|&mediapopup=42584408',
+    countsLike : function(){
     this.likes ++;
     console.log(this.likes);
-  },
+    },
 }
 let persen_1 = new Commit('Дмитрий','Обслуживание очень качественное', CustomImg.avatarUrl);
 Object.setPrototypeOf(persen_1,CustomImg);
