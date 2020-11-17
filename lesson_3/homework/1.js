@@ -17,6 +17,35 @@
       + бонсу анимация появления слайдов через навешивание дополнительных стилей
 
 */
-
   var OurSliderImages = ['images/cat1.jpg', 'images/cat2.jpg', 'images/cat3.jpg', 'images/cat4.jpg', 'images/cat5.jpg', 'images/cat6.jpg', 'images/cat7.jpg', 'images/cat8.jpg'];
   var currentPosition = 0;
+  window.onload = function(e){
+      let buttons = document.querySelectorAll('header button');
+      console.log(buttons);
+      let getSlider = document.getElementById('slider');
+      let image = document.createElement('img');
+      image.src = 'images/cat1.jpg';
+      getSlider.appendChild(image);
+      currentPosition ++;
+      buttons.forEach(function(elem, item){
+          if(elem.id == 'PrevSlide'){
+              elem.addEventListener("click", function(){
+                  currentPosition --;
+                  if(currentPosition <= 0){
+                      currentPosition = 1;
+                  }
+                  image.src = OurSliderImages[currentPosition - 1];
+                })
+          }
+          if(elem.id == 'NextSlide'){
+              elem.addEventListener("click", function(){
+                  if(currentPosition >= OurSliderImages.length){
+                      currentPosition = OurSliderImages.length - 1;
+                  }
+                  image.src = OurSliderImages[currentPosition];
+                  currentPosition ++;
+              })
+          }  
+      })
+  }
+  

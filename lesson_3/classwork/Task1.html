@@ -22,7 +22,7 @@
           <ul id="list">
 
           </ul>
-        </div>
+         </div>
 
     </div>
     <script>
@@ -51,9 +51,31 @@
           Получить значение инпута: Receiver.value [Receiver - это id]
 
       */
-
-      var ListCount = 0;
-
+      document.addEventListener("DOMContentLoaded", function(){
+          let ListCount = 0;
+          let inputItem = document.querySelectorAll('header input');
+          console.log(inputItem);
+          let list = document.getElementById('list');
+          let addToList = document.getElementById('AddToList');
+              
+          inputItem.forEach(function(elem, item){
+              if(elem.type == 'submit'){
+                  elem.addEventListener("click", subm);
+              }
+          });
+          function subm(){
+              let elLi = document.getElementById('Receiver');
+              console.log(elLi.value);
+              let item = document.createElement('li');
+              item.innerText = elLi.value;
+              list.appendChild(item);
+              elLi.value = '';
+              ListCount ++;
+              console.log(ListCount);
+              if(ListCount >= 5) addToList.removeEventListener("click", subm);
+          }
+      });
+    
     </script>
   </body>
 
